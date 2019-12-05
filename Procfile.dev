@@ -1,1 +1,1 @@
-web: python server.py
+web: python budayaKB_controller.py

@@ -1,0 +1,34 @@
+<html>
+<head>
+	<title>BudayaKB Lite</title>
+    <style>
+        form  { display: table;      }
+        div p { display: table-row;  }
+        label { display: table-cell; }
+        input { display: table-cell; }
+    </style>
+</head>
+
+<body>
+	 {% include 'includes/_navbar.html' %}
+	<h2>Tambah Budaya</h2>
+    <p>Masukkan data budaya yang akan ditambahkan ke dalam sistem</p>
+
+	<div class="container">
+        <form method="POST", action="" enctype = "multipart/form-data">
+            <p><label>Nama:</label><input type="text" name=name required></p>
+            <p><label>Tipe:</label><input type="text" name=tipe required></p>
+            <p><label>Provinsi:   </label><input type="text" name=prov required></p>
+            <p><label>URL referensi:</label><input type="text" name=url required></p>
+            <input type=submit value="Tambah Data">
+	    </form>
+    </div>
+
+
+<!-- 	{% if result == success: %}
+	<h3>{% print result %} Sukses menambahkan data "{%print fname%}"</h3>
+    {% elif result == failed: %}
+    <h3>{% print result %} Data dengan nama "{%print fname%}" sudah ada</h3>
+	{% endif %} -->
+</body>
+</html>

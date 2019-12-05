@@ -3,10 +3,6 @@ The Model component of BudayaKB app.
 Contains two classes:
 - class BudayaItem : the representation of a data in BudayaKB app
 - class BudayaCollection: the representation of the collection of BudayaItem objects
-
-Author: Ika Alfina (ika.alfina@cs.ui.ac.id)
-
-Last update: 22 November 2019
 """
 import csv
 

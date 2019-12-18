@@ -1,0 +1,80 @@
+<html>
+<head>
+	<title>BudayaKB Lite</title>
+    <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid brown;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+    }
+    </style>
+</head>
+
+<body>
+	 {% include 'includes/_navbar.html' %}
+	<h2>Statistik Budaya</h2>
+    <p>Pilih kriteria pencarian statistik untuk semua, tipe budaya, atau asal provinsi budaya</p>
+
+	<div class="container">
+        <form method="POST", action="" enctype = "multipart/form-data">
+            <select name="pilih">
+                <option value="all">Semua</option>
+                <option value="tipe">Tipe Budaya</option>
+                <option value="prov">Asal Provinsi Budaya</option>
+			</select><br>
+            <input type=submit value="Tampilkan">
+	    </form>
+    </div>
+
+    {% if result_all is defined and result_all == 0 %}
+    <h3>Data kosong. Silakan mengimpor data terlebih dahulu.</h3>
+
+    {% elif result_all is defined and result_all != 0 %}
+    <h3>BudayaKB memiliki total {{ result_all }} budaya.</h3>
+
+    {% elif tipe_dict is defined and tipe_dict == {} %}
+    <h3>Data kosong. Silakan mengimpor data terlebih dahulu.</h3>
+
+    {% elif tipe_dict is defined and tipe_dict != {} %}
+    <h3>Statistik Data Budaya berdasarkan Tipe Budaya</h3>
+    <table>
+        <tr>
+            <th>Tipe Budaya</th>
+            <th>Jumlah</th>
+        </tr>
+        {% for tipe, jumlah in tipe_dict.items() %}
+        <tr>
+            <td>{{ tipe }}</td>
+            <td>{{ jumlah }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% elif prov_dict is defined and prov_dict == {} %}
+    <h3>Data kosong. Silakan mengimpor data terlebih dahulu.</h3>
+
+    {% elif prov_dict is defined and prov_dict != {} %}
+    <h3>Statistik Data Budaya berdasarkan Asal Provinsi Budaya</h3>
+    <table>
+        <tr>
+            <th>Asal Provinsi Budaya</th>
+            <th>Jumlah</th>
+        </tr>
+        {% for prov, jumlah in prov_dict.items() %}
+        <tr>
+            <td>{{ prov }}</td>
+            <td>{{ jumlah }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+	{% endif %}
+</body>
+</html>

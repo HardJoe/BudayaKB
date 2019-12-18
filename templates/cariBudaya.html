@@ -1,0 +1,130 @@
+<html>
+<head>
+	<title>BudayaKB Lite</title>
+    <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid brown;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+    }
+    </style>
+</head>
+
+<body>
+	 {% include 'includes/_navbar.html' %}
+	<h2>Cari Budaya</h2>
+    <p>Pilih kriteria pencarian beserta nama, tipe, atau provinsi yang ingin dicari</p>
+    <p>Masukkan keyword "*" untuk melihat seluruh data pada sistem</p>
+
+	<div class="container">
+        <form method="POST", action="" enctype = "multipart/form-data">
+            <select name="pilih">
+                <option value="name">Nama Budaya</option>
+                <option value="tipe">Tipe Budaya</option>
+                <option value="prov">Asal Provinsi Budaya</option>
+			</select>
+            <input type="text" name=entry required><br>
+            <input type=submit value="Cari">
+	    </form>
+    </div>
+
+	{% if qty_all is defined and qty_all == 0 %}
+	<h3>Data kosong. Silakan mengimpor data terlebih dahulu.</h3>
+
+    {% elif qty_all is defined and qty_all != 0 %}
+	<h3>Ditemukan {{ qty_all }} data pada sistem</h3>
+    <table>
+        <tr>
+            <th>Nama</th>
+            <th>Tipe</th>
+            <th>Asal Provinsi</th>
+            <th>URL Referensi</th>
+        </tr>
+        {% for object in all_list %}
+        <tr>
+            <td>{{ object.nama }}</td>
+            <td>{{ object.tipe }}</td>
+            <td>{{ object.prov }}</td>
+            <td>{{ object.url }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% elif qty_name is defined and qty_name == 0 %}
+	<h3>Data yang Anda cari tidak ditemukan.</h3>
+    <h3>Jangan lupa untuk mengimpor data jika merasa belum.</h3>
+
+    {% elif qty_name is defined and qty_name != 0 %}
+	<h3>Ditemukan {{ qty_name }} data dengan nama budaya "{{ name }}"</h3>
+    <table>
+        <tr>
+            <th>Nama</th>
+            <th>Tipe</th>
+            <th>Asal Provinsi</th>
+            <th>URL Referensi</th>
+        </tr>
+        {% for object in name_list %}
+        <tr>
+            <td>{{ object.nama }}</td>
+            <td>{{ object.tipe }}</td>
+            <td>{{ object.prov }}</td>
+            <td>{{ object.url }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% elif qty_tipe is defined and qty_tipe == 0 %}
+	<h3>Tipe budaya yang Anda cari tidak ditemukan.</h3>
+    <h3>Jangan lupa untuk mengimpor data jika merasa belum.</h3>
+
+    {% elif qty_tipe is defined and qty_tipe != 0 %}
+	<h3>Ditemukan {{ qty_tipe }} data dengan tipe budaya "{{ tipe }}"</h3>
+    <table>
+        <tr>
+            <th>Nama</th>
+            <th>Tipe</th>
+            <th>Asal Provinsi</th>
+            <th>URL Referensi</th>
+        </tr>
+        {% for object in tipe_list %}
+        <tr>
+            <td>{{ object.nama }}</td>
+            <td>{{ object.tipe }}</td>
+            <td>{{ object.prov }}</td>
+            <td>{{ object.url }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% elif qty_prov is defined and qty_prov == 0 %}
+	<h3>Asal provinsi budaya yang Anda cari tidak ditemukan.</h3>
+    <h3>Jangan lupa untuk mengimpor data jika merasa belum.</h3>
+
+    {% elif qty_prov is defined and qty_prov != 0 %}
+	<h3>Ditemukan {{ qty_prov }} data dengan asal provinsi budaya "{{ prov }}"</h3>
+    <table>
+        <tr>
+            <th>Nama</th>
+            <th>Tipe</th>
+            <th>Asal Provinsi</th>
+            <th>URL Referensi</th>
+        </tr>
+        {% for object in prov_list %}
+        <tr>
+            <td>{{ object.nama }}</td>
+            <td>{{ object.tipe }}</td>
+            <td>{{ object.prov }}</td>
+            <td>{{ object.url }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+	{% endif %}
+</body>
+</html>

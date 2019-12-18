@@ -13,9 +13,12 @@
 		<input type=submit value="Import Data">
 	</form>
 
-
 	{% if result is defined and result >0: %}
-	<h3>{% print result %} data budaya telah terimpor dari file "{%print fname%}"</h3>
+	<h3>{{ result }} data budaya telah terimpor dari file "{{ fname }}"</h3>
+	{% elif f_error is defined: %}
+	<h3>File tidak bisa dibaca. File harus berformat .csv</h3>
+    {% elif p_error is defined: %}
+    <h3>File masih dibuka di tempat lain.</h3>
 	{% endif %}
 </body>
 </html>

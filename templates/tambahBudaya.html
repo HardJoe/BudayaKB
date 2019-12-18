@@ -6,6 +6,7 @@
         div p { display: table-row;  }
         label { display: table-cell; }
         input { display: table-cell; }
+        /* Display table agar terlihat rapi */
     </style>
 </head>
 
@@ -25,10 +26,12 @@
     </div>
 
 
-<!-- 	{% if result == success: %}
-	<h3>{% print result %} Sukses menambahkan data "{%print fname%}"</h3>
-    {% elif result == failed: %}
-    <h3>{% print result %} Data dengan nama "{%print fname%}" sudah ada</h3>
-	{% endif %} -->
+	{% if result is defined and result == 1: %}
+	<h3>Sukses menambahkan data "{{ name }}" ke {{ filename }}</h3>
+    {% elif result is defined and result == 0: %}
+    <h3>Data dengan nama "{{ name }}" sudah ada</h3>
+    {% elif f_error is defined and f_error == 1: %}
+    <h3>Silakan mengimpor data terlebih dahulu</h3>
+	{% endif %}
 </body>
 </html>

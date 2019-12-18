@@ -29,7 +29,7 @@ class BudayaItem(object):
 
 	def __str__(self):
 		"""
-		Return a string that deescribes an instance of BudayaItem
+		Return a string that describes an instance of BudayaItem
 		"""
 		return self.nama + ", " + self.tipe + ", " + self.prov + ", " + self.url
 
@@ -86,9 +86,21 @@ class BudayaCollection(object):
 		print(resultStr, file=fh)
 		fh.close()
 
+	def cariAll(self):
+		"""
+		Return a list containing all BudayaItem objects
+
+		"""
+		result = []
+
+		for item in self.koleksi.values():
+			result.append(item)
+
+		return result
+
 	def cariByNama(self, aName):
 		"""
-		Return a list contains BudayaItem object of a certain name
+		Return a list containing BudayaItem object of a certain name
 
 		"""
 		result = []

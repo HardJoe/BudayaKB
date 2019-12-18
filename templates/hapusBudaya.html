@@ -12,21 +12,19 @@
 
 <body>
 	 {% include 'includes/_navbar.html' %}
-	<h2>Ubah Budaya</h2>
-    <p>Masukkan data budaya yang akan diubah</p>
+	<h2>Hapus Budaya</h2>
+    <p>Masukkan data budaya yang akan dihapus</p>
 
 	<div class="container">
         <form method="POST", action="" enctype = "multipart/form-data">
-            <p><label>Nama:</label><input type="text" name=name required></p>
-            <p><label>Tipe:</label><input type="text" name=tipe required></p>
-            <p><label>Provinsi:   </label><input type="text" name=prov required></p>
-            <p><label>URL referensi:</label><input type="text" name=url required></p>
-            <input type=submit value="Ubah Data">
+            <p><label>Nama:</label><input type="text" name=name required></p><br>
+            <input type=submit value="Hapus Data">
 	    </form>
     </div>
 
+
 	{% if result is defined and result == 1: %}
-	<h3>Sukses mengubah data "{{ name }}"</h3>
+	<h3>Sukses menghapus data "{{ name }}".</h3>
     {% elif result is defined and result == 0: %}
     <h3>Data dengan nama "{{ name }}" tidak ada dalam sistem.</h3>
     {% elif f_error is defined and f_error == 1: %}
